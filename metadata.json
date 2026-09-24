@@ -1,0 +1,8 @@
+{
+  "name": "REDLINE RUSH",
+  "description": "A high-octane retro arcade flying game by Lakshay Deshwal featuring Aditya Jatik and Pari Goyal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

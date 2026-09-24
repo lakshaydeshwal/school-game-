@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>REDLINE RUSH | By Lakshay Deshwal</title>
+    <meta name="description" content="REDLINE RUSH - Cyberpunk retro arcade flying game by Lakshay Deshwal." />
+    <meta property="og:title" content="REDLINE RUSH | By Lakshay Deshwal" />
+    <meta property="og:description" content="REDLINE RUSH - Cyberpunk retro arcade flying game by Lakshay Deshwal." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Google Fonts: Anton (Bold condensed titles) + Press Start 2P (Cyberpunk pixel text) + Rajdhani (Technical UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Press+Start+2P&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <!-- Screen Shake Wrapper -->
+    <div id="screen-shake-wrapper">
+
+      <!-- TOP BAR / BRANDING (Matches Image 1) -->
+      <header id="top-branding" class="cyber-top-bar">
+        <div class="top-bar-left">
+          <div class="brand-r-badge">
+            <span class="badge-r">R</span>
+            <span class="badge-star">✳</span>
+          </div>
+          <div class="brand-title-group">
+            <div class="brand-title-row">
+              <span class="title-white">REDLINE</span>
+              <span class="title-red">RUSH</span>
+            </div>
+            <div class="brand-sub">ARCADE // 001</div>
+          </div>
+        </div>
+        
+        <div class="top-bar-right">
+          <div class="status-online">
+            <span class="status-dot">●</span>
+            <span class="status-text">SYSTEM ONLINE</span>
+          </div>
+          <span class="brand-author">BY LAKSHAY DESHWAL</span>
+          <div class="top-bar-controls">
+            <button id="btn-sound-toggle" class="cyber-icon-btn" title="Toggle Sound" aria-label="Toggle Sound">
+              <span id="sound-icon">🔊</span>
+            </button>
+            <button id="btn-crt-toggle" class="cyber-icon-btn" title="Toggle Scanlines" aria-label="Toggle Scanlines">
+              CRT
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN APP CONTAINER -->
+      <main id="app-container">
+
+        <!-- 1. INTRO SCREEN (~3s Boot-up Animation) -->
+        <section id="screen-intro" class="game-screen active">
+          <div class="intro-backdrop-grid"></div>
+          <div class="intro-content">
+            <div class="intro-brand-cluster">
+              <div class="intro-r-badge">
+                <span class="badge-r">R</span>
+                <span class="badge-star">✳</span>
+              </div>
+              <h1 class="intro-main-title">
+                <span class="title-white">REDLINE</span>
+                <span class="title-red">RUSH</span>
+              </h1>
+            </div>
+            
+            <div class="intro-author-sub">BY LAKSHAY DESHWAL</div>
+
+            <div class="boot-progress-container">
+              <div class="boot-status-msg" id="boot-status-text">INITIALIZING ENGINE CORE...</div>
+              <div class="boot-progress-bar">
+                <div class="boot-progress-fill" id="boot-progress-fill"></div>
+              </div>
+            </div>
+
+            <button id="btn-skip-intro" class="cyber-text-btn">SKIP &gt;&gt;</button>
+          </div>
+        </section>
+
+        <!-- 2. CHARACTER SELECTION SCREEN (Matches Image 2 & 3) -->
+        <section id="screen-select" class="game-screen">
+          <div class="select-header-row">
+            <div class="select-header-left">
+              <h2 class="select-title">
+                <span class="txt-white">SELECT YOUR</span>
+                <span class="txt-red">CHARACTER.</span>
+              </h2>
+              <p class="select-tagline">Two pilots. One rush. Who's taking the lead?</p>
+            </div>
+            <div class="select-header-right">
+              <div class="counter-num">01 — 02</div>
+              <div class="counter-lbl">AVAILABLE PILOTS</div>
+            </div>
+          </div>
+
+          <!-- Dynamic Character Grid -->
+          <div class="characters-grid" id="characters-container">
+            <!-- Dynamically populated from JS character data -->
+          </div>
+
+          <!-- Bottom Action Deck (Matches Image 3) -->
+          <div class="selection-action-dock" id="selection-action-dock">
+            <div class="dock-left">
+              <div class="dock-tag">// PILOT SELECTED</div>
+              <div class="dock-pilot-name" id="dock-pilot-name">ADITYA JATIK</div>
+            </div>
+            <div class="dock-right">
+              <button id="btn-open-ability" class="cyber-btn btn-secondary">
+                <span class="btn-icon">⚡</span> ABILITY
+              </button>
+              <button id="btn-confirm-character" class="cyber-btn btn-primary">
+                LOAD PLAYER <span class="btn-arrow">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="select-footer-bar">
+            <span>REDLINE RUSH © ARCADE EDITION</span>
+            <span>CHOOSE YOUR PILOT TO CONTINUE</span>
+          </div>
+        </section>
+
+        <!-- 3. CART / TRANSPORT LOADING & PREVIEW SCREEN (Matches Image 4) -->
+        <section id="screen-preview" class="game-screen">
+          <div class="preview-layout-container">
+            
+            <!-- Left: Tilted Cassette / Cartridge Photo Frame -->
+            <div class="cartridge-frame-wrap">
+              <div class="cartridge-box" id="preview-cartridge">
+                <div class="cartridge-header">
+                  <span class="cartridge-target-icon">⛶</span>
+                  <span class="cartridge-transfer-title" id="cartridge-transfer-title">PLAYER TRANSFER / CH_1</span>
+                  <span class="cartridge-live-dot">● LIVE</span>
+                </div>
+
+                <div class="cartridge-photo-area">
+                  <div class="photo-crosshair top-left">+</div>
+                  <div class="photo-crosshair bottom-right">+</div>
+                  <div class="photo-radar-bg"></div>
+                  <img id="preview-character-img" src="" alt="Pilot" class="cartridge-img" />
+                </div>
+
+                <div class="cartridge-footer">
+                  <span class="cartridge-code">RDR // 001</span>
+                  <span class="cartridge-ready-tag">LOADED & READY</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Big Bold Typography & Launch Controls -->
+            <div class="preview-info-column">
+              <div class="preview-tag">// INSERT PLAYER</div>
+              <h2 class="preview-big-title">
+                <span class="line-white">PLAYER</span>
+                <span class="line-yellow">READY.</span>
+              </h2>
+              <div class="preview-pilot-sub" id="preview-pilot-sub">ADITYA JATIK</div>
+
+              <div class="preview-cta-block">
+                <button id="btn-launch-game" class="cyber-btn btn-primary btn-large">
+                  START GAME <span class="btn-arrow">→</span>
+                </button>
+                <div class="preview-controls-hint">SPACE // CLICK // TAP TO FLY</div>
+              </div>
+
+              <button id="btn-back-to-select" class="cyber-text-btn back-btn">
+                &lt; BACK TO ROSTER
+              </button>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 4. GAMEPLAY SCREEN (Matches Image 5) -->
+        <section id="screen-game" class="game-screen">
+          <div class="game-viewport-frame" id="game-viewport-frame">
+            
+            <!-- Top HUD Bar inside Frame -->
+            <div class="game-hud-bar">
+              <div class="hud-left-stats">
+                <span class="hud-live-tag">● LIVE RUN</span>
+                <span class="hud-score-label">SCORE:</span>
+                <span class="hud-score-val" id="hud-current-score">0000</span>
+                <span class="hud-best-label">BEST:</span>
+                <span class="hud-best-val" id="hud-best-score">0000</span>
+              </div>
+              <div class="hud-right-stats">
+                <span class="hud-pilot-tag" id="hud-pilot-display">PILOT // ADITYA JATIK</span>
+                <button id="btn-pause-game" class="cyber-icon-btn pause-btn" title="Pause Game">⏸</button>
+              </div>
+            </div>
+
+            <!-- Canvas Arena -->
+            <div class="canvas-wrapper" id="canvas-wrapper">
+              <canvas id="game-canvas"></canvas>
+
+              <!-- Pause Overlay -->
+              <div id="pause-overlay" class="game-modal-backdrop hidden">
+                <div class="pause-box">
+                  <h3 class="pause-title">GAME PAUSED</h3>
+                  <p class="pause-sub">SYSTEMS ON STANDBY</p>
+                  <button id="btn-resume-game" class="cyber-btn btn-primary">RESUME FLIGHT →</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bottom HUD Footer inside Frame -->
+            <div class="game-bottom-bar">
+              <span class="bottom-controls-hint">SPACE // CLICK // TAP TO FLY</span>
+              <span class="bottom-tagline">AVOID THE HAZARDS • SURVIVE THE RUSH</span>
+            </div>
+
+            <!-- Corner Crosshair Ticks for Cyberpunk Viewport -->
+            <div class="frame-tick top-left"></div>
+            <div class="frame-tick top-right"></div>
+            <div class="frame-tick bottom-left"></div>
+            <div class="frame-tick bottom-right"></div>
+          </div>
+        </section>
+
+        <!-- 5. GAME OVER SCREEN (Cyberpunk Style) -->
+        <section id="screen-gameover" class="game-screen">
+          <div class="gameover-container">
+            <div class="gameover-tag">// FLIGHT TERMINATED</div>
+            <h2 class="gameover-title">
+              <span class="txt-white">YOU'RE</span>
+              <span class="txt-red">OUT.</span>
+            </h2>
+
+            <!-- Defeated Character Summary Card -->
+            <div class="gameover-card">
+              <div class="gameover-body">
+                <div class="gameover-avatar-wrap">
+                  <div class="avatar-radar-bg"></div>
+                  <img id="gameover-pilot-img" src="" alt="Fighter" class="gameover-avatar" />
+                </div>
+
+                <div class="gameover-info-col">
+                  <div class="gameover-char-name" id="gameover-pilot-name">ADITYA JATIK</div>
+                  <div class="gameover-trait" id="gameover-trait-quote">"LANGDA BOY"</div>
+                  
+                  <div class="gameover-scores-grid">
+                    <div class="score-pod">
+                      <span class="pod-lbl">SCORE</span>
+                      <span class="pod-val" id="gameover-final-score">0000</span>
+                    </div>
+                    <div class="score-pod best-pod">
+                      <span class="pod-lbl">BEST</span>
+                      <span class="pod-val" id="gameover-best-score">0000</span>
+                      <div id="new-record-badge" class="new-record-tag hidden">★ NEW RECORD! ★</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="gameover-actions">
+              <button id="btn-gameover-retry" class="cyber-btn btn-primary btn-large">
+                RETRY <span class="btn-arrow">→</span>
+              </button>
+              <button id="btn-gameover-change" class="cyber-btn btn-secondary">
+                CHANGE CHARACTER
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- 6. CHARACTER ABILITY / DOSSIER MODAL -->
+      <div id="modal-ability" class="arcade-modal-backdrop hidden" role="dialog" aria-modal="true">
+        <div class="arcade-modal-card">
+          <div class="modal-header">
+            <div class="modal-title-cluster">
+              <span class="modal-tag">// CLASSIFIED DOSSIER</span>
+              <h3 class="modal-title">PILOT SPECIFICATIONS</h3>
+            </div>
+            <button id="btn-close-ability" class="modal-close-btn" aria-label="Close Profile">✕</button>
+          </div>
+
+          <div class="modal-body" id="ability-modal-body">
+            <!-- Dynamically populated from JS Character Object with radar backdrop -->
+          </div>
+
+          <div class="modal-footer">
+            <button id="btn-close-ability-footer" class="cyber-btn btn-secondary">[CLOSE]</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Optional CRT Screen Effects Overlays -->
+    <div id="crt-overlay" class="crt-scanlines pointer-events-none"></div>
+    <div id="crt-vignette" class="crt-vignette pointer-events-none"></div>
+
+    <!-- Game Engine Script -->
+    <script type="module" src="/game.js"></script>
+  </body>
+</html>
